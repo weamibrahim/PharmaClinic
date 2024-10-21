@@ -80,11 +80,11 @@ UserController.login = async (req, res) => {
 UserController.updateUser = async (req, res) => {
   try {
 console.log(req.body);
-    let imageUrl = req.body.image;
+    let imageUrl = req.body.photo;
     if (req.file) {
       imageUrl = req.file.path;
     }
-const updatedInfo = {...req.body, profileImage:imageUrl};
+const updatedInfo = {...req.body, photo:imageUrl};
     const updatedUser = await User.findByIdAndUpdate(req.params.id, updatedInfo, {
       new: true,
     });
