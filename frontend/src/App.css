@@ -1,0 +1,17 @@
+
+.background_reg{
+background-image: url("https://img.freepik.com/free-photo/overhead-view-medical-desk-with-succulent-plant-wireless-keyboard-green-surface_23-2148213944.jpg?t=st=1729353502~exp=1729357102~hmac=e92ecdd092eb205bf4fca66f27a403564080f3497b2183c71b24934b6ea76f49&w=1060");
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+height: 120vh;  
+}
+.background_login{
+    background-image: url("https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7893.jpg?t=st=1729353851~exp=1729357451~hmac=a251502895a10f4708a4f1cc0fad20a74563e18ae913a347092c4906854c0003&w=740");
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+height: 90vh;
+
+
+}
