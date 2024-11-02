@@ -37,7 +37,7 @@ function AllPrescription() {
   };
 
   return (
-    <div className="mx-auto p-4 sm:ml-64 my-20">
+    <div className="mx-auto p-4 sm:ml-64 mt-16 background_pharamcy">
       <div className="flex justify-between mb-4 my-10">
         <input
           type="text"
@@ -48,7 +48,8 @@ function AllPrescription() {
         />
       </div>
       <h1 className="text-2xl font-bold mb-4">All Prescriptions</h1>
-      <table className="min-w-full bg-white border border-gray-200">
+      <div className="overflow-x-auto">
+      <table className="min-w-full bg-white/20 border border-gray-200">
         <thead>
           <tr>
             <th className="py-2 px-4 border-b">Patient name</th>
@@ -73,7 +74,11 @@ function AllPrescription() {
                 <td className="py-2 px-4 border-b">{new Date(prescription.Date).toLocaleDateString()}</td>
                 <td className="py-2 px-4 border-b">{prescription.prescription}</td>
                 <td className="py-2 px-4 border-b ">
-                  <NavLink className="bg-white border border-cyan-400 hover:bg-cyan-400 text-cyan-400 hover:text-white font-bold py-2 px-4 rounded" to={`/viewPrescription/${prescription._id}`}>View</NavLink></td>
+                  <button className="bg-transparent border-2 border-cyan-400 hover:bg-cyan-400 text-cyan-400 hover:text-white font-bold py-2 px-4 rounded">
+                  
+                  <NavLink  to={`/viewPrescription/${prescription._id}`}>View</NavLink>
+                  </button></td>
+                
                 <td className="py-2 px-4 border-b">
           {prescription.IsRead ? 'Read' : 'Unread'}
         </td>
@@ -86,6 +91,7 @@ function AllPrescription() {
           )}
         </tbody>
       </table>
+      </div>
       
       {/* Pagination UI */}
       <nav aria-label="Page navigation example" className="flex justify-center mt-4">

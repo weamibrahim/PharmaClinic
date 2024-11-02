@@ -1,5 +1,5 @@
 const Medicine = require("../Models/Medicine");
-
+const Notification = require("../Models/Notifications");
 const MedicineController = {};
 
 
@@ -14,7 +14,7 @@ MedicineController.getMedicines = async (req, res) => {
         res.json({
             medicines,
             currentPage: page,
-            totalPages: Math.ceil(totalCount / limit),});
+            totalPages: Math.ceil(totalCount / limit)});
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -33,9 +33,14 @@ MedicineController.getMedicineById = async (req, res) => {
 };
 MedicineController.getAllMedicinesByName = async (req, res) => {
     try {
-      const medicines = await Medicine.find({}).select("name _id dosage");
-      console.log(medicines);
-        res.json(medicines);
+        const page = parseInt(req.query.page) || 1;
+     const limit=10
+     const startIndex = (page - 1) * limit;
+     const totalCount = await Medicine.countDocuments();
+      const medicines = await Medicine.find({}).select("name _id dosage").limit(limit).skip(startIndex);
+     // console.log(medicines);
+        res.json({ medicines,currentPage: page,
+            totalPages: Math.ceil(totalCount / limit)});
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: error.message });
@@ -45,6 +50,21 @@ MedicineController.createMedicine = async (req, res) => {
     try {
         const newMedicine = new Medicine(req.body);
         await newMedicine.save();
+
+        const notification = new Notification({
+            userId: req.user.userId,
+            notification: "A new Medicine has been added",
+            type: "addMedicine",
+            
+            
+        });
+        await notification.save();
+        global.io.emit('newMedicineNotification', {
+            message: 'A new Medicine has been added ',
+            
+            medicineName: newMedicine.name,
+            
+        });
         res.status(201).json({ message: "Medicine created successfully", newMedicine });
     } catch (error) {
         res.status(400).json({ message: error.message });

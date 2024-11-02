@@ -58,7 +58,7 @@ function AllMedicines() {
   };
 
   return (
-    <div className="mx-auto p-4 sm:ml-64 my-10">
+    <div className="mx-auto p-4 sm:ml-64 mt-16 background_pharamcy">
       <div className="flex justify-between mb-4 my-10">
         <input
           type="text"
@@ -67,18 +67,19 @@ function AllMedicines() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="border border-gray-300 rounded-md px-2 py-1"
         />
-        <button className="text-center bg-white border border-blue-500 hover:bg-blue-700 text-blue-500 hover:text-white font-bold py-2 px-4 rounded">
+        <button className="text-center ms-2 p-1  bg-transparent border-2  border-blue-500 hover:bg-blue-700 text-blue-500 hover:text-white font-bold  rounded">
         <NavLink to="/createMedicines">Add Medicine</NavLink>
         </button>
       </div>
-      <table className="min-w-full bg-white border border-gray-200">
+      <div className="overflow-x-auto">
+      <table className="min-w-full bg-transparent border border-gray-200 ">
         <thead>
           <tr>
             <th className="py-2 px-4 border-b">ID</th>
             <th className="py-2 px-4 border-b">Name</th>
            
             <th className="py-2 px-4 border-b">Dosage</th>
-            
+            <th className="py-2 px-4 border-b">price</th>
             <th className="py-2 px-4 border-b">Action</th>
           </tr>
         </thead>
@@ -94,7 +95,7 @@ function AllMedicines() {
                   <td className="py-2 px-4 border-b">{medicine.name}</td>
                
                   <td className="py-2 px-4 border-b">{medicine.dosage}</td>
-                  
+                  <td className="py-2 px-4 border-b">{medicine.price}</td>
                   <td className="py-2 px-4 border-b">
                     <button
                       onClick={() => handleDelete(medicine._id)}
@@ -102,7 +103,7 @@ function AllMedicines() {
                     >
                       <MdDelete />
                     </button>
-                    <button className="bg-white border border-cyan-400 hover:bg-cyan-400 text-cyan-400 hover:text-white font-bold py-2 px-4 rounded ms-1">
+                    <button className="hover:bg-transparent border-2 hover:border-cyan-400 bg-cyan-400  hover:text-cyan-400 text-white font-bold py-2 px-4 rounded ms-1">
                       <NavLink to={`/updateMedicines/${medicine._id}`}><FaRegEdit/></NavLink>
                     </button>
                   </td>
@@ -117,6 +118,7 @@ function AllMedicines() {
           )}
         </tbody>
       </table>
+      </div>
 
       {/* Pagination UI */}
       <nav aria-label="Page navigation example" className="flex justify-center mt-4">

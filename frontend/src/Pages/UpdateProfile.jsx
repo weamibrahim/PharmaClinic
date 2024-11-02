@@ -5,21 +5,21 @@ import { useToast } from "../Context/ToastContext";
 function UpdateProfile() {
   const { showToast } = useToast();
   const user = JSON.parse(localStorage.getItem("user"));
-  
+
   const [infoOfUser, setInfoOfUser] = useState({
     name: user.name,
     email: user.email,
     phone: user.phone,
     address: user.address,
     specialization: user.specialization,
-    photo: user.photo, // Keep initial photo value from user object
+    photo: user.photo,
   });
   console.log(infoOfUser.photo);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "photo") {
-      setInfoOfUser((prev) => ({ ...prev, photo: files[0] })); // Only set the file
+      setInfoOfUser((prev) => ({ ...prev, photo: files[0] }));
     } else {
       setInfoOfUser((prev) => ({ ...prev, [name]: value }));
     }
@@ -32,7 +32,7 @@ function UpdateProfile() {
       formData.append(key, infoOfUser[key]);
     });
 
-    
+
     try {
       const response = await axios.put(
         `http://localhost:3000/user/${user._id}`,
@@ -50,9 +50,10 @@ function UpdateProfile() {
 
   return (
     <div className="mx-auto sm:ml-64 mt-16">
-      <div className="grid grid-cols-4 justify-between">
-        <div className="col-span-1 sm:col-span-1 lg:col-span-1">
-          <div className="bg-gray-200 p-4 h-full flex flex-col items-center">
+      <h1 className="text-3xl font-bold pt-5 ps-5">Account setting</h1>
+      <div className="grid grid-cols-1 md:grid-cols-4  justify-between">
+        <div className="col-span-1 md:col-span-1 ms-5 mt-4 me-4">
+          <div className="bg-gray-200 p-4 h-full flex flex-col items-center rounded-3xl">
             <img
               src={user.photo}
               alt="Profile"
@@ -61,15 +62,15 @@ function UpdateProfile() {
             <h3 className="text-lg font-semibold my-5">{user.name}</h3>
             <p className="text-gray-600 mb-4">{user.email}</p>
             <p className="text-gray-600 mb-4">{user.phone}</p>
-            <p className="text-gray-600 mb-4 ">{user.address}</p>
-            <p className="text-gray-600 mb-4 ">{user.specialization}</p>
+            <p className="text-gray-600 mb-4">{user.address}</p>
+            <p className="text-gray-600 mb-4">{user.specialization}</p>
           </div>
         </div>
-        <div className="col-span-3 sm:col-span-3 lg:col-span-3">
-          <div className="bg-gray-300 p-4">
+        <div className="col-span-1 md:col-span-3 ms-5 mt-4 me-4">
+          <div className="bg-gray-200 p-4 rounded-3xl">
             <h2 className="text-2xl font-bold mb-4">Update Profile</h2>
             <form onSubmit={handleSubmit}>
-              <div className="mb-4">
+              <div className="mb-2">
                 <input
                   type="file"
                   id="photo"
@@ -78,11 +79,8 @@ function UpdateProfile() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="name"
-                  className="block text-gray-700 font-bold mb-2"
-                >
+              <div className="mb-2">
+                <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
                   Name
                 </label>
                 <input
@@ -94,11 +92,8 @@ function UpdateProfile() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className="block text-gray-700 font-bold mb-2"
-                >
+              <div className="mb-2">
+                <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
                   Email
                 </label>
                 <input
@@ -110,11 +105,8 @@ function UpdateProfile() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="phone"
-                  className="block text-gray-700 font-bold mb-2"
-                >
+              <div className="mb-2">
+                <label htmlFor="phone" className="block text-gray-700 font-bold mb-2">
                   Phone
                 </label>
                 <input
@@ -126,11 +118,8 @@ function UpdateProfile() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="address"
-                  className="block text-gray-700 font-bold mb-2"
-                >
+              <div className="mb-2">
+                <label htmlFor="address" className="block text-gray-700 font-bold mb-2">
                   Address
                 </label>
                 <input
@@ -142,7 +131,7 @@ function UpdateProfile() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="mb-4">
+              <div className="mb-2">
                 <label
                   htmlFor="specialization"
                   className="block text-gray-700 font-bold mb-2"
@@ -161,7 +150,7 @@ function UpdateProfile() {
               <div className="flex justify-center">
                 <button
                   type="submit"
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                  className="bg-white border border-green-400 hover:text-white text-green-400 hover:bg-green-500 font-bold my-1 py-2 px-4 rounded"
                 >
                   Update
                 </button>
@@ -171,6 +160,7 @@ function UpdateProfile() {
         </div>
       </div>
     </div>
+
   );
 }
 

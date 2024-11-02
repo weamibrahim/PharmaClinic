@@ -5,6 +5,13 @@ import { CiLogout } from "react-icons/ci";
 import { IoPeopleOutline } from "react-icons/io5";
 import { IoIosSettings } from "react-icons/io";
 import { useLogin } from "../Context/IsLoginContext";
+import {faCapsules} from "@fortawesome/free-solid-svg-icons";
+import NotificationBell from "./NotificationaddPrescription";
+import NotificationAddMedicine from "./NotificationaddMedicine";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faFilePrescription} from "@fortawesome/free-solid-svg-icons";
+import {faHospitalUser} from "@fortawesome/free-solid-svg-icons";
+
 function Sidebar() {
   const { setIsLogin } = useLogin();
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +36,7 @@ function Sidebar() {
   return (
     <>
      
-      <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+      <nav className="fixed top-0 z-50 w-full bg-green-100 border-b dark:bg-gray-800 dark:border-gray-700">
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start rtl:justify-end">
@@ -57,7 +64,7 @@ function Sidebar() {
               <NavLink to="/" className="flex ms-2 md:me-24">
                 <img
                   src="https://img.freepik.com/free-vector/hand-drawn-baby-logo_23-2148013976.jpg?t=st=1728926916~exp=1728930516~hmac=841ca1c28443c274b1c12172e09a48afd622611df20d22a49ea0938099b40a0d&w=740"
-                  className="w-12 h-12 me-3"
+                  className="w-12 h-12 me-3 rounded-full"
                   alt="FlowBite Logo"
                 />
                 <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
@@ -67,12 +74,13 @@ function Sidebar() {
             </div>
             <div className="flex items-center">
               <div className="flex items-center ms-3">
-                <div className="me-2">
-                  <NavLink to="/login">Login</NavLink>
-                </div>
-                <div className="me-2">
-                  <NavLink to="/register">Register</NavLink>
-                </div>
+             {
+              user.role === "pharmacist" && (
+                <div className="mx-3"><NotificationBell/></div>)
+             }
+             {user.role==="doctor" && (
+               <div className="mx-3"><NotificationAddMedicine/></div>
+              )}
                 <div>
                   <button
                     type="button"
@@ -85,8 +93,11 @@ function Sidebar() {
                       src={`${user.photo}`}
                       alt="user photo"
                     />
+                    
                   </button>
+                 
                 </div>
+               
                 {isMenuOpen && (
                   <div
                     className="absolute  right-0 top-12 my-2 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
@@ -138,19 +149,29 @@ function Sidebar() {
       </nav>
       <aside
         id="logo-sidebar"
-        className={`fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform ${
+        className={`fixed top-0 left-0 z-40 w-64 pt-20 transition-transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700`}
+        } bg-green-100   border-r-2 h-screen  sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700`}
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
-          <ul className="space-y-2 font-medium">
+        <div className=" px-3 pb-4 overflow-y-auto bg-green-100  dark:bg-gray-800">
+          <ul className="space-y-2 font-medium my-8">
             {user.role === "doctor" && (
               <li>
-                <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                  <IoPeopleOutline className="text-2xl" />
+                <div className="flex items-center  p-2 text-gray-900 rounded-lg dark:text-white bg-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700 group">
+                <FontAwesomeIcon icon={faHospitalUser} className="text-2xl"/>
                   <span className="ms-3">
                     <NavLink to="/patients">Patients</NavLink>
+                  </span>
+                </div>
+              </li>
+            )}
+             {user.role === "admin" && (
+              <li>
+                <div className="flex items-center  p-2 text-gray-900 rounded-lg bg-gray-200 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700 group">
+                  <IoPeopleOutline className="text-2xl" />
+                  <span className="ms-3">
+                    <NavLink to="/users">users</NavLink>
                   </span>
                 </div>
               </li>
@@ -158,16 +179,16 @@ function Sidebar() {
             {user.role === "pharmacist" && (
               <>
                 <li>
-                  <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <IoPeopleOutline className="text-2xl" />
+                  <div className="flex items-center p-2 text-gray-900 rounded-lg bg-gray-200 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700 group">
+                    <FontAwesomeIcon icon={faCapsules} className="text-2xl" />
                     <span className="ms-3">
                       <NavLink to="/allMedicines">medicines</NavLink>
                     </span>
                   </div>
                 </li>
                 <li>
-                  <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <IoPeopleOutline className="text-2xl" />
+                  <div className="flex items-center p-2 text-gray-900 rounded-lg bg-gray-200 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700 group">
+                  <FontAwesomeIcon icon={faFilePrescription} className="text-2xl" />
                     <span className="ms-3">
                       <NavLink to="/allPrescription">Prescription</NavLink>
                     </span>
@@ -176,14 +197,7 @@ function Sidebar() {
               </>
             )}
 
-            {/* <li>
-         <NavLink to="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-           <svg className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-             <path d="M4 1a1 1 0 0 0-1 1v17a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4Zm1 2h10v13H5V3Zm6 4H9v2h2V7Zm-2 4h2v2H9v-2Z" />
-           </svg>
-           <span className="ms-3">Projects</span>
-         </NavLink>
-       </li> */}
+            
           </ul>
         </div>
       </aside>

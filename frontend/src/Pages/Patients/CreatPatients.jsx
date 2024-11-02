@@ -23,7 +23,7 @@ function CreatPatients() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Await the axios call and store the response
+
       const response = await axios.post(
         "http://localhost:3000/patient",
         dataOfPatient,
@@ -48,13 +48,13 @@ function CreatPatients() {
   };
 
   return (
-    <div className=" mx-auto p-4 sm:ml-64 my-20">
-      <form onSubmit={handleSubmit}>
+    <div className=" mx-auto p-4 sm:ml-64 mt-16 background_patient">
+      <form onSubmit={handleSubmit} className="my-9">
         <div className="grid grid-cols-2 gap-8">
           <div>
             <label htmlFor="name">Name</label>
             <input
-              className="block w-full"
+              className="block w-full focus:ring-green-400 focus:border-green-400 rounded-md"
               type="text"
               name="name"
               value={dataOfPatient.name}
@@ -64,7 +64,7 @@ function CreatPatients() {
           <div>
             <label htmlFor="age">Age</label>
             <input
-              className="block w-full"
+              className="block w-full focus:ring-green-400 focus:border-green-400 rounded-md"
               type="number"
               min={0}
               max={20}
@@ -76,7 +76,7 @@ function CreatPatients() {
           <div>
             <label htmlFor="gender">Gender</label>
             <select
-              className="block w-full"
+              className="block w-full focus:ring-green-400 focus:border-green-400 rounded-md"
               name="gender"
               value={dataOfPatient.gender}
               onChange={handleChange}
@@ -89,7 +89,7 @@ function CreatPatients() {
           <div>
             <label htmlFor="phone">Phone</label>
             <input
-              className="block w-full"
+              className="block w-full focus:ring-green-400 focus:border-green-400 rounded-md"
               type="text"
               name="phone"
               value={dataOfPatient.phone}
@@ -99,7 +99,7 @@ function CreatPatients() {
           <div>
             <label htmlFor="address">Address</label>
             <input
-              className="block w-full"
+              className="block w-full focus:ring-green-400 focus:border-green-400 rounded-md"
               type="text"
               name="address"
               value={dataOfPatient.address}
@@ -109,7 +109,7 @@ function CreatPatients() {
           <div>
             <label htmlFor="date">Date</label>
             <input
-              className="block w-full"
+              className="block w-full focus:ring-green-400 focus:border-green-400 rounded-md"
               type="date"
               name="date"
               value={dataOfPatient.date}

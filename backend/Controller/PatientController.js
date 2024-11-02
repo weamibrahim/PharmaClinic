@@ -75,7 +75,7 @@ PatientController.createPatient = async (req, res) => {
         { _id: userId },
         { $push: { patient: patient._id } }
       );
-      console.log("updated", updated_User);
+     // console.log("updated", updated_User);
       res.status(200).json({ patient, message: "Patient added successfully" });
     }
   } catch (error) {
@@ -101,7 +101,7 @@ PatientController.deletePatient = async (req, res) => {
       _id: req.params.id,
       doctors: req.user.userId,
     });
-    console.log("patient", patient);
+   // console.log("patient", patient);
     if (!patient) {
       return res
         .status(404)

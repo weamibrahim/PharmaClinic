@@ -12,6 +12,10 @@ const medicineSchema = new mongoose.Schema({
       description: {
         type: String,
       },
+      price:{
+        type: Number,
+        required: true,
+      }
     },
     {
       timestamps: true

@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import { useToast } from "./../../Context/ToastContext";
+import "../../App.css"
 function Patients() {
   const { showToast } = useToast();
   const [patients, setPatients] = useState([]);
@@ -13,7 +14,7 @@ function Patients() {
 
   useEffect(() => {
     getPatients();
-  }, [page]); // Re-run getPatients when page changes
+  }, [page]); 
 
   const getPatients = async () => {
     try {
@@ -57,7 +58,7 @@ function Patients() {
   };
 
   return (
-    <div className=" mx-auto p-4 sm:ml-64 my-10">
+    <div className=" mx-auto p-4 sm:ml-64 mt-16 background_patient" >
        <div className="flex justify-between mb-4 my-10">
         <input
           type="text"
@@ -66,12 +67,12 @@ function Patients() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="border border-gray-300 rounded-md px-2 py-1"
         />
-        <button className='text-center bg-white border border-blue-500 hover:bg-blue-700 text-blue-500 hover:text-white font-bold py-2 px-4 rounded'>
-          <NavLink to="/creatPatients">Create Patient</NavLink>
+        <button className='ms-2 p-1 text-center bg-transparent border-2 border-blue-500 hover:bg-blue-700 text-blue-500 hover:text-white font-bold  rounded'>
+          <NavLink to="/creatPatients">Create </NavLink>
         </button>
       </div>
       <div className="overflow-x-auto">
-      <table className=" min-w-full bg-white border border-gray-200">
+      <table className=" min-w-full bg-transparent border border-gray-500">
         <thead>
           <tr>
             <th className="py-2 px-4 border-b">ID</th>
@@ -101,14 +102,14 @@ function Patients() {
                 <td className="py-2 px-4 border-b">{patient.date.slice(0, 10)}</td>
                 <td className="py-2 px-4 border-b"> 
                   <button
-                    className="bg-white border border-cyan-400 hover:bg-cyan-400 text-cyan-400 hover:text-white font-bold py-2 px-4 rounded ms-1"
+                    className="bg-transparent border-2 border-cyan-400 hover:bg-cyan-400 text-cyan-400 hover:text-white font-bold py-2 px-4 rounded ms-1"
                   >
                     <NavLink to={`/prescription/${patient._id}`}>View</NavLink>
                   </button>
                 </td>
                 <td className="py-2 px-4 border-b">
                   <button
-                    className="bg-white border border-green-400 hover:bg-green-400 text-green-400 hover:text-white font-bold py-2 px-4 rounded ms-1"
+                    className="bg-transparent border-2 border-green-400 hover:bg-green-400 text-green-400 hover:text-white font-bold py-2 px-4 rounded ms-1"
                   >
                     <NavLink to={`/addPrescription/${patient._id}`}>Add</NavLink>
                   </button>

@@ -12,6 +12,23 @@ background-repeat: no-repeat;
 background-size: cover;
 background-position: center;
 height: 90vh;
+}
 
+/* }https://img.freepik.com/free-vector/pharmacist_23-2148177220.jpg?t=st=1729611224~exp=1729614824~hmac=898ac587bd662fbce838a9c7380b8d94b373e52278f2ac8da168119b0208705f&w=740 */
+/* https://img.freepik.com/free-vector/pharmacist_23-2148172787.jpg?t=st=1729611125~exp=1729614725~hmac=53396c79efcf240651b6a6bce1ac94aed0c6b6f9aec1d6a398e4740b8a0ef078&w=740 */
+/* https://img.freepik.com/free-photo/stethoscope-with-blank-paper-white-pills-pastel-green-background_23-2148213975.jpg?t=st=1729609538~exp=1729613138~hmac=afa0a3367cc925ac7edb11697080c3d8d8a81f0461624c0af6c7ec1f0e8cc547&w=740 */
 
+.background_patient{
+    background-image: url("https://img.freepik.com/free-photo/medical-instrument-with-alarm-clock-succulent-plant-plain-surface_23-2148213948.jpg?t=st=1729611129~exp=1729614729~hmac=eca6e2859a44edeaafca8dba27f6528b8b17a0e2d4b12abefc2676061385460c&w=1060");
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+min-height: 91vh;
+}
+.background_pharamcy{
+background-image: url("https://img.freepik.com/free-vector/pharmacist_23-2148177220.jpg?t=st=1729611224~exp=1729614824~hmac=898ac587bd662fbce838a9c7380b8d94b373e52278f2ac8da168119b0208705f&w=740");
+background-repeat: no-repeat;
+background-size: cover;
+
+min-height: 91vh;
 }

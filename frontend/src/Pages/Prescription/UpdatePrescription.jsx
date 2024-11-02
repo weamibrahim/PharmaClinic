@@ -40,9 +40,9 @@ function UpdatePrescription() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-   const response =   await axios.put(`http://localhost:3000/prescription/${id}`, {
+      const response = await axios.put(`http://localhost:3000/prescription/${id}`, {
         ...prescription,
-        Date: prescription.Date // Ensure Date is correctly formatted, if necessary
+        Date: prescription.Date 
       }, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -57,28 +57,33 @@ function UpdatePrescription() {
   };
 
   return (
-    <div className="mx-auto p-4 sm:ml-64 my-10">
-      <form onSubmit={handleSubmit} className='flex flex-col my-20'>
-        <label htmlFor="prescription">Prescription:</label>
+    <div className="mx-auto p-4 sm:ml-64 mt-16 bg-emerald-400 background_patient">
+      <form onSubmit={handleSubmit} className='flex flex-col mx-auto  max-w-96 my-20 bg-white/20 p-10'>
+        <label htmlFor="prescription"
+
+          className='my-4'>Prescription:</label>
         <input
+
           type="text"
           id="prescription"
           name="prescription"
+          className='focus:ring-green-400 focus:border-green-400 rounded-md'
           value={prescription.prescription}
           onChange={handleChange}
-         
+
         />
-        <label htmlFor="date">Date:</label>
+        <label htmlFor="date"
+          className='my-4'>Date:</label>
         <input
           type="date"
-          
+          className='focus:ring-green-400 focus:border-green-400 rounded-md'
           name="Date"
           value={prescription.Date}
           onChange={handleChange}
-          
+
         />
-        
-        <div className='flex justify-center'>
+
+        <div className='flex justify-center my-8'>
           <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' type="submit">Update</button>
         </div>
       </form>

@@ -16,8 +16,10 @@ import AllMedicines from "./Pages/Medicines/AllMedicines";
 import CreateMedicines from "./Pages/Medicines/CreateMedicines";
 import UpdateMedicines from "./Pages/Medicines/UpdateMedicines";
 import UpdateProfile from "./Pages/UpdateProfile";
-import{ useLogin } from "./Context/IsLoginContext";
-
+import AllUser from "./Pages/Users/AllUser";
+import Chat from "./Components/Chat";
+import { useLogin } from "./Context/IsLoginContext";
+import Header from "./Components/Header";
 import { ToastContainer } from 'react-toastify';
 import NotFound from "./Pages/NotFound";
 
@@ -32,19 +34,19 @@ function App() {
   useEffect(() => {
     console.log('Is Logged In:', isLoggedIn);
   }, [IsLogin]);
- 
+
 
   return (
     <BrowserRouter>
-  <ToastContainer />
+      <ToastContainer />
       <Routes>
         <Route element={<Layout />}>
-        
+
 
           {/* Routes for doctor */}
           {userRole === "doctor" ? (
             <>
-              <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/login" />} />
+          
               <Route path="/patients" element={isLoggedIn ? <Patients /> : <Navigate to="/login" />} />
               <Route path="/creatPatients" element={isLoggedIn ? <CreatPatients /> : <Navigate to="/login" />} />
               <Route path="/updatePatients/:id" element={isLoggedIn ? <UpdatePatients /> : <Navigate to="/login" />} />
@@ -57,7 +59,7 @@ function App() {
             </>
           ) : userRole === "pharmacist" ? (  // Routes for pharmacist
             <>
-              <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/login" />} />
+              
               <Route path="/allPrescription" element={isLoggedIn ? <AllPrescription /> : <Navigate to="/login" />} />
               <Route path="/allMedicines" element={isLoggedIn ? <AllMedicines /> : <Navigate to="/login" />} />
               <Route path="/createMedicines" element={isLoggedIn ? <CreateMedicines /> : <Navigate to="/login" />} />
@@ -65,14 +67,24 @@ function App() {
               <Route path="/viewPrescription/:id" element={isLoggedIn ? <ViewPrescription /> : <Navigate to="/login" />} />
               <Route path="/updateProfile" element={isLoggedIn ? <UpdateProfile /> : <Navigate to="/login" />} />
             </>
-          ) :  null} {/* If userRole is neither, you can show a 404 or redirect to login */}
+          ) : userRole === "admin" ? (
+            <>
+              
+              <Route path="/users" element={isLoggedIn ? <AllUser /> : <Navigate to="/login" />} />
+              <Route path="/updateProfile" element={isLoggedIn ? <UpdateProfile /> : <Navigate to="/login" />} />
+
+
+            </>) : null}
 
         </Route>
+       
+        <Route path="/" element={<><Header /><Home /></>} />
+        <Route path="/login" element={<><Header /><Login /></>} />
+        <Route path="/register" element={<><Header /><Register /></>} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
     
+      </Routes>
+
     </BrowserRouter>
   );
 }

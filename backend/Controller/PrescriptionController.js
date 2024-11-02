@@ -1,5 +1,5 @@
 const Prescription = require("../Models/Prescription");
-
+const Notification = require("../Models/Notifications");
 const PrescriptionController = {};
 
 PrescriptionController.getAllPrescriptions = async (req, res) => {
@@ -18,7 +18,7 @@ PrescriptionController.getAllPrescriptions = async (req, res) => {
       currentPage: page,
       totalPages: Math.ceil(totalCount / limit),
     });
-    console.log(prescriptions);
+    //console.log(prescriptions);
    
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -84,7 +84,20 @@ PrescriptionController.createPrescription = async (req, res) => {
                 IsRead
             });
 
-            await newPrescription.save(); 
+            await newPrescription.save();
+
+            const notification = new Notification({
+              userId: req.user.userId,
+              notification: "A new Prescription has been added",
+              type: "addPrescription",
+              
+            });
+            await notification.save();
+            global.io.emit('newPrescriptionNotification', {
+              message: 'A new prescription has been added!',
+              // prescriptionId: newPrescription._id,
+              // doctorName: req.user.name,
+          });
             res.status(201).json({ newPrescription, message: "Prescription added successfully" });
   } catch (error) {
     res.status(400).json({ message: error.message });

@@ -12,16 +12,16 @@ const verifyToken = (req, res, next) => {
 
   const token = authHeader.split(' ')[1].replace(/^"(.*)"$/, '$1');
   jwt.verify(token, accessTokenSecret, (err, decodedToken) => {
-    //console.log('accessTokenSecret:', accessTokenSecret);
-     // console.log('authHeader:', authHeader);
-     // console.log('token:', token);
+    // console.log('accessTokenSecret:', accessTokenSecret);
+    //  console.log('authHeader:', authHeader);
+    //  console.log('token:', token);
  
     if (err) {
       console.error('Error verifying token:', err);
       return res.status(401).json({ message: 'Invalid token' });
       
     }
-    console.log('Decoded Token:', decodedToken);
+   // console.log('Decoded Token:', decodedToken);
    
 
     req.user = decodedToken;
