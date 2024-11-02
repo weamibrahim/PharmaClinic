@@ -35,7 +35,7 @@ function UpdateProfile() {
 
     try {
       const response = await axios.put(
-        `http://localhost:3000/user/${user._id}`,
+        `https://pharmaclinic-production.up.railway.app/user/${user._id}`,
         formData,
         { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
       );

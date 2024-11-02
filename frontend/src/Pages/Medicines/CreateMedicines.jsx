@@ -27,10 +27,10 @@ function CreateMedicines() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-  
+
 
     try {
-      const response = await axios.post('http://localhost:3000/medicine', medicine, {
+      const response = await axios.post('https://pharmaclinic-production.up.railway.app/medicine', medicine, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -43,7 +43,7 @@ function CreateMedicines() {
     } catch (error) {
       showToast(error.response.data.message, 'error');
       console.error('Error creating medicine:', error);
-      
+
       setLoading(false);
     }
   };
@@ -51,7 +51,7 @@ function CreateMedicines() {
   return (
     <div className="mx-auto p-4 sm:ml-64 my-10 background_pharamcy">
       <h2 className="text-2xl font-bold mb-4 my-10">Create New Medicine</h2>
-      
+
 
       <form onSubmit={handleSubmit} className="max-w-md text-black mx-auto p-10 rounded-md my-4 bg-white/25">
         <div className="mb-4">

@@ -14,11 +14,11 @@ function Patients() {
 
   useEffect(() => {
     getPatients();
-  }, [page]); 
+  }, [page]);
 
   const getPatients = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/patient?page=${page}`,{
+      const response = await axios.get(`https://pharmaclinic-production.up.railway.app/patient?page=${page}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -32,7 +32,7 @@ function Patients() {
   };
   const handleDelete = async (id) => {
     try {
-   const response =   await axios.delete(`http://localhost:3000/patient/${id}`,{
+      const response = await axios.delete(`https://pharmaclinic-production.up.railway.app/patient/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -59,7 +59,7 @@ function Patients() {
 
   return (
     <div className=" mx-auto p-4 sm:ml-64 mt-16 background_patient" >
-       <div className="flex justify-between mb-4 my-10">
+      <div className="flex justify-between mb-4 my-10">
         <input
           type="text"
           placeholder="Search by name"
@@ -72,80 +72,80 @@ function Patients() {
         </button>
       </div>
       <div className="overflow-x-auto">
-      <table className=" min-w-full bg-transparent border border-gray-500">
-        <thead>
-          <tr>
-            <th className="py-2 px-4 border-b">ID</th>
-            <th className="py-2 px-4 border-b">Name</th>
-            <th className="py-2 px-4 border-b">Age</th>
-            <th className="py-2 px-4 border-b">Gender</th>
-            <th className="py-2 px-4 border-b">Phone</th>
-            <th className="py-2 px-4 border-b">Address</th>
-            <th className="py-2 px-4 border-b">Date</th>
-            <th className="py-2 px-4 border-b">View Prescription</th>
-            <th className="py-2 px-4 border-b">add Prescription</th>
-
-            <th className="py-2 px-4 border-b">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {patients.length > 0 ? (
-            patients.filter((patient) => patient.name.toLowerCase().includes(searchTerm.toLowerCase()))
-            .map((patient, index) => (
-              <tr key={index} className='text-center'>
-                <td className="py-2 px-4 border-b">{index+1}</td>
-                <td className="py-2 px-4 border-b">{patient.name}</td>
-                <td className="py-2 px-4 border-b">{patient.age}</td>
-                <td className="py-2 px-4 border-b">{patient.gender}</td>
-                <td className="py-2 px-4 border-b">{patient.phone}</td>
-                <td className="py-2 px-4 border-b">{patient.address}</td>
-                <td className="py-2 px-4 border-b">{patient.date.slice(0, 10)}</td>
-                <td className="py-2 px-4 border-b"> 
-                  <button
-                    className="bg-transparent border-2 border-cyan-400 hover:bg-cyan-400 text-cyan-400 hover:text-white font-bold py-2 px-4 rounded ms-1"
-                  >
-                    <NavLink to={`/prescription/${patient._id}`}>View</NavLink>
-                  </button>
-                </td>
-                <td className="py-2 px-4 border-b">
-                  <button
-                    className="bg-transparent border-2 border-green-400 hover:bg-green-400 text-green-400 hover:text-white font-bold py-2 px-4 rounded ms-1"
-                  >
-                    <NavLink to={`/addPrescription/${patient._id}`}>Add</NavLink>
-                  </button>
-                </td>
-                <td className="py-2 px-4 border-b">
-                  <button
-                    className="bg-zinc-400 hover:bg-zinc-500 text-white font-bold py-2 px-4 rounded ms-1"
-                  >
-                    <NavLink to={`/updatePatients/${patient._id}`}><FaRegEdit /></NavLink>
-                  </button>
-                  <button
-                    onClick={() => handleDelete(patient._id)}
-                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ms-1 "
-                  >
-                 <MdDelete />
-                   </button> 
-                </td>
-             
-
-                
-              </tr>
-            ))
-          ) : (
+        <table className=" min-w-full bg-transparent border border-gray-500">
+          <thead>
             <tr>
-              <td colSpan="8" className="py-2 px-4 border-b text-center">
-                No patients found
-              </td>
+              <th className="py-2 px-4 border-b">ID</th>
+              <th className="py-2 px-4 border-b">Name</th>
+              <th className="py-2 px-4 border-b">Age</th>
+              <th className="py-2 px-4 border-b">Gender</th>
+              <th className="py-2 px-4 border-b">Phone</th>
+              <th className="py-2 px-4 border-b">Address</th>
+              <th className="py-2 px-4 border-b">Date</th>
+              <th className="py-2 px-4 border-b">View Prescription</th>
+              <th className="py-2 px-4 border-b">add Prescription</th>
+
+              <th className="py-2 px-4 border-b">Action</th>
             </tr>
-          )}
-          
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {patients.length > 0 ? (
+              patients.filter((patient) => patient.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                .map((patient, index) => (
+                  <tr key={index} className='text-center'>
+                    <td className="py-2 px-4 border-b">{index + 1}</td>
+                    <td className="py-2 px-4 border-b">{patient.name}</td>
+                    <td className="py-2 px-4 border-b">{patient.age}</td>
+                    <td className="py-2 px-4 border-b">{patient.gender}</td>
+                    <td className="py-2 px-4 border-b">{patient.phone}</td>
+                    <td className="py-2 px-4 border-b">{patient.address}</td>
+                    <td className="py-2 px-4 border-b">{patient.date.slice(0, 10)}</td>
+                    <td className="py-2 px-4 border-b">
+                      <button
+                        className="bg-transparent border-2 border-cyan-400 hover:bg-cyan-400 text-cyan-400 hover:text-white font-bold py-2 px-4 rounded ms-1"
+                      >
+                        <NavLink to={`/prescription/${patient._id}`}>View</NavLink>
+                      </button>
+                    </td>
+                    <td className="py-2 px-4 border-b">
+                      <button
+                        className="bg-transparent border-2 border-green-400 hover:bg-green-400 text-green-400 hover:text-white font-bold py-2 px-4 rounded ms-1"
+                      >
+                        <NavLink to={`/addPrescription/${patient._id}`}>Add</NavLink>
+                      </button>
+                    </td>
+                    <td className="py-2 px-4 border-b">
+                      <button
+                        className="bg-zinc-400 hover:bg-zinc-500 text-white font-bold py-2 px-4 rounded ms-1"
+                      >
+                        <NavLink to={`/updatePatients/${patient._id}`}><FaRegEdit /></NavLink>
+                      </button>
+                      <button
+                        onClick={() => handleDelete(patient._id)}
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ms-1 "
+                      >
+                        <MdDelete />
+                      </button>
+                    </td>
+
+
+
+                  </tr>
+                ))
+            ) : (
+              <tr>
+                <td colSpan="8" className="py-2 px-4 border-b text-center">
+                  No patients found
+                </td>
+              </tr>
+            )}
+
+          </tbody>
+        </table>
       </div>
-   
- {/* Pagination UI */}
- <nav aria-label="Page navigation example" className="flex justify-center mt-4">
+
+      {/* Pagination UI */}
+      <nav aria-label="Page navigation example" className="flex justify-center mt-4">
         <ul className="flex items-center -space-x-px h-10 text-base">
           <li>
             <button
@@ -153,7 +153,7 @@ function Patients() {
               disabled={page === 1}
               className={`flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 ${page === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100 hover:text-gray-700'}`}
             >
-              
+
               <svg className="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
               </svg>
@@ -178,7 +178,7 @@ function Patients() {
               disabled={page === totalPages}
               className={`flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 ${page === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-100 hover:text-gray-700'}`}
             >
-              
+
               <svg className="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
               </svg>
@@ -186,7 +186,7 @@ function Patients() {
           </li>
         </ul>
       </nav>
-      
+
     </div>
   );
 }

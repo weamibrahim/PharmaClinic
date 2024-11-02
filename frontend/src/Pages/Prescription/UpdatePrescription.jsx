@@ -14,7 +14,7 @@ function UpdatePrescription() {
   useEffect(() => {
     const fetchPrescription = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/prescription/view/${id}`, {
+        const response = await axios.get(`https://pharmaclinic-production.up.railway.app/prescription/view/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -40,9 +40,9 @@ function UpdatePrescription() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:3000/prescription/${id}`, {
+      const response = await axios.put(`https://pharmaclinic-production.up.railway.app/prescription/${id}`, {
         ...prescription,
-        Date: prescription.Date 
+        Date: prescription.Date
       }, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`

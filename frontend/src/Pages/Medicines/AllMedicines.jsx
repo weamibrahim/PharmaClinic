@@ -17,7 +17,7 @@ function AllMedicines() {
 
   const getMedicines = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/medicine?page=${page}`, {
+      const response = await axios.get(`https://pharmaclinic-production.up.railway.app/medicine?page=${page}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -32,7 +32,7 @@ function AllMedicines() {
 
   const handleDelete = async (id) => {
     try {
-  const response =    await axios.delete(`http://localhost:3000/medicine/${id}`, {
+      const response = await axios.delete(`https://pharmaclinic-production.up.railway.app/medicine/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -68,56 +68,56 @@ function AllMedicines() {
           className="border border-gray-300 rounded-md px-2 py-1"
         />
         <button className="text-center ms-2 p-1  bg-transparent border-2  border-blue-500 hover:bg-blue-700 text-blue-500 hover:text-white font-bold  rounded">
-        <NavLink to="/createMedicines">Add Medicine</NavLink>
+          <NavLink to="/createMedicines">Add Medicine</NavLink>
         </button>
       </div>
       <div className="overflow-x-auto">
-      <table className="min-w-full bg-transparent border border-gray-200 ">
-        <thead>
-          <tr>
-            <th className="py-2 px-4 border-b">ID</th>
-            <th className="py-2 px-4 border-b">Name</th>
-           
-            <th className="py-2 px-4 border-b">Dosage</th>
-            <th className="py-2 px-4 border-b">price</th>
-            <th className="py-2 px-4 border-b">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {medicines.length > 0 ? (
-            medicines
-              .filter((medicine) =>
-                medicine.name.toLowerCase().includes(searchTerm.toLowerCase())
-              )
-              .map((medicine, index) => (
-                <tr key={index} className="text-center my-5">
-                  <td className="py-2 px-4 border-b">{index + 1}</td>
-                  <td className="py-2 px-4 border-b">{medicine.name}</td>
-               
-                  <td className="py-2 px-4 border-b">{medicine.dosage}</td>
-                  <td className="py-2 px-4 border-b">{medicine.price}</td>
-                  <td className="py-2 px-4 border-b">
-                    <button
-                      onClick={() => handleDelete(medicine._id)}
-                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ms-1"
-                    >
-                      <MdDelete />
-                    </button>
-                    <button className="hover:bg-transparent border-2 hover:border-cyan-400 bg-cyan-400  hover:text-cyan-400 text-white font-bold py-2 px-4 rounded ms-1">
-                      <NavLink to={`/updateMedicines/${medicine._id}`}><FaRegEdit/></NavLink>
-                    </button>
-                  </td>
-                </tr>
-              ))
-          ) : (
+        <table className="min-w-full bg-transparent border border-gray-200 ">
+          <thead>
             <tr>
-              <td colSpan="5" className="py-2 px-4 border-b text-center">
-                No medicines found
-              </td>
+              <th className="py-2 px-4 border-b">ID</th>
+              <th className="py-2 px-4 border-b">Name</th>
+
+              <th className="py-2 px-4 border-b">Dosage</th>
+              <th className="py-2 px-4 border-b">price</th>
+              <th className="py-2 px-4 border-b">Action</th>
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {medicines.length > 0 ? (
+              medicines
+                .filter((medicine) =>
+                  medicine.name.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+                .map((medicine, index) => (
+                  <tr key={index} className="text-center my-5">
+                    <td className="py-2 px-4 border-b">{index + 1}</td>
+                    <td className="py-2 px-4 border-b">{medicine.name}</td>
+
+                    <td className="py-2 px-4 border-b">{medicine.dosage}</td>
+                    <td className="py-2 px-4 border-b">{medicine.price}</td>
+                    <td className="py-2 px-4 border-b">
+                      <button
+                        onClick={() => handleDelete(medicine._id)}
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ms-1"
+                      >
+                        <MdDelete />
+                      </button>
+                      <button className="hover:bg-transparent border-2 hover:border-cyan-400 bg-cyan-400  hover:text-cyan-400 text-white font-bold py-2 px-4 rounded ms-1">
+                        <NavLink to={`/updateMedicines/${medicine._id}`}><FaRegEdit /></NavLink>
+                      </button>
+                    </td>
+                  </tr>
+                ))
+            ) : (
+              <tr>
+                <td colSpan="5" className="py-2 px-4 border-b text-center">
+                  No medicines found
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
 
       {/* Pagination UI */}

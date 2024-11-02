@@ -28,7 +28,7 @@ function CreatePrescription() {
 
   const getMedicines = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/medicine/name?page=${page}`, {
+      const response = await axios.get(`https://pharmaclinic-production.up.railway.app/medicine/name?page=${page}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -57,7 +57,7 @@ function CreatePrescription() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:3000/prescription/${patientId}`, prescription, {
+    axios.post(`https://pharmaclinic-production.up.railway.app/prescription/${patientId}`, prescription, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },

@@ -25,7 +25,7 @@ function CreatPatients() {
     try {
 
       const response = await axios.post(
-        "http://localhost:3000/patient",
+        "https://pharmaclinic-production.up.railway.app/patient",
         dataOfPatient,
         {
           headers: {

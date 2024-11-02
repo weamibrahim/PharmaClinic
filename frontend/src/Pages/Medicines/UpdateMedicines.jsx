@@ -19,7 +19,7 @@ function UpdateMedicines() {
     // Fetch the current medicine data
     const getMedicineDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/medicine/${id}`, {
+        const response = await axios.get(`https://pharmaclinic-production.up.railway.app/medicine/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -47,7 +47,7 @@ function UpdateMedicines() {
 
 
     try {
-      const response = await axios.put(`http://localhost:3000/medicine/${id}`, medicine, {
+      const response = await axios.put(`https://pharmaclinic-production.up.railway.app/medicine/${id}`, medicine, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

@@ -20,7 +20,7 @@ function UpdatePatients() {
   useEffect(() => {
     const fetchPatientData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/patient/${id}`, {
+        const response = await axios.get(`https://pharmaclinic-production.up.railway.app/patient/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -46,7 +46,7 @@ function UpdatePatients() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.put(`http://localhost:3000/patient/${id}`, dataOfPatient, {
+      const response = await axios.put(`https://pharmaclinic-production.up.railway.app/patient/${id}`, dataOfPatient, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

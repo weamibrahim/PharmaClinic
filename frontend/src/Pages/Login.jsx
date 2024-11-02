@@ -41,7 +41,7 @@ function Login() {
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
 
     try {
-      const response = await axios.post("http://localhost:3000/user/login", values);
+      const response = await axios.post("https://pharmaclinic-production.up.railway.app/user/login", values);
       localStorage.setItem("token", response.data.accessToken);
       localStorage.setItem("user", JSON.stringify(response.data.user));
 

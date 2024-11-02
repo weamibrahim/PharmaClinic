@@ -6,7 +6,7 @@ import UserList from './UserList';
 import DeleteConfirmModel from './DeleteConfirmModel';
 import InputMessage from './InputMessage';
 import Messages from './Messages';
-const socket = io('http://localhost:3000');
+const socket = io('https://pharmaclinic-production.up.railway.app');
 
 function Chat() {
   const { showToast } = useToast();
@@ -26,7 +26,7 @@ function Chat() {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('http://localhost:3000/user/all', {
+      const res = await axios.get('https://pharmaclinic-production.up.railway.app/user/all', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -47,7 +47,7 @@ function Chat() {
 
     try {
       const response = await axios.put(
-        `http://localhost:3000/message/${editingMessageId}`,
+        `https://pharmaclinic-production.up.railway.app/message/${editingMessageId}`,
         { message: newMessage },
         {
           headers: {
@@ -67,7 +67,7 @@ function Chat() {
 
   const deleteMessage = async (messageId) => {
     try {
-      const response = await axios.delete(`http://localhost:3000/message/${messageId}`, {
+      const response = await axios.delete(`https://pharmaclinic-production.up.railway.app/message/${messageId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -83,7 +83,7 @@ function Chat() {
 
   const fetchMessages = async (receiverId) => {
     try {
-      const res = await axios.get(`http://localhost:3000/message/${currentUserId}/${receiverId}`, {
+      const res = await axios.get(`https://pharmaclinic-production.up.railway.app/message/${currentUserId}/${receiverId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -99,7 +99,7 @@ function Chat() {
     if (!message) return;
     try {
       await axios.post(
-        'http://localhost:3000/message/send',
+        'https://pharmaclinic-production.up.railway.app/message/send',
         {
           senderId: currentUserId,
           receiverId: selectedUser._id,

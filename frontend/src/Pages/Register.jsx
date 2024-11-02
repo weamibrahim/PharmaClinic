@@ -37,7 +37,7 @@ function Register() {
         formData.append(key, values[key]);
       });
 
-      const response = await axios.post("http://localhost:3000/user/register", formData);
+      const response = await axios.post("https://pharmaclinic-production.up.railway.app/user/register", formData);
       console.log(response);
       navigate("/login");
       showToast(response.data.message, "success");

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { MdDelete } from "react-icons/md";
-const socket = io('http://localhost:3000');
+const socket = io('https://pharmaclinic-production.up.railway.app');
 
 function NotificationAddMedicine() {
     const [notifications, setNotifications] = useState([]);
@@ -13,37 +13,37 @@ function NotificationAddMedicine() {
 
 
     useEffect(() => {
-      
-        fetchNotifications();
-        
-    }, []);
-  const fetchNotifications = async () => {
-            try {
-                const response = await axios.get('http://localhost:3000/notification/', {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('token')}`,
-                    },
-                });
-                setNotifications(response.data.notifications);
-               
-            } catch (error) {
-                console.error("Error fetching notifications:", error);
-            }
-        };
 
-        const deleteNotification = async (id) => {
-            try {
-                await axios.delete(`http://localhost:3000/notification/${id}`, {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('token')}`,
-                    },
-                });
-                fetchNotifications();
-            } catch (error) {
-                console.error("Error deleting notification:", error);
-            }
-        };
-    
+        fetchNotifications();
+
+    }, []);
+    const fetchNotifications = async () => {
+        try {
+            const response = await axios.get('https://pharmaclinic-production.up.railway.app/notification/', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            });
+            setNotifications(response.data.notifications);
+
+        } catch (error) {
+            console.error("Error fetching notifications:", error);
+        }
+    };
+
+    const deleteNotification = async (id) => {
+        try {
+            await axios.delete(`https://pharmaclinic-production.up.railway.app/notification/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            });
+            fetchNotifications();
+        } catch (error) {
+            console.error("Error deleting notification:", error);
+        }
+    };
+
     useEffect(() => {
         socket.on('newMedicineNotification', (data) => {
             setNotifications((prevNotifications) => [
@@ -77,7 +77,7 @@ function NotificationAddMedicine() {
                         {notifications.length > 0 ? (
                             notifications.map((notification, index) => (
                                 <li key={index} className='flex justify-between'>
-                                   <span > {notification.notification}</span>
+                                    <span > {notification.notification}</span>
                                     {notification.isRealTime && <span className="text-green-500"> (New)</span>
                                     }
                                     <button

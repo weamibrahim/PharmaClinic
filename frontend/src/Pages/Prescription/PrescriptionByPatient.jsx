@@ -20,7 +20,7 @@ function PrescriptionByPatient() {
 
   const getPrescription = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/prescription/${patientId}?page=${page}`, {
+      const response = await axios.get(`https://pharmaclinic-production.up.railway.app/prescription/${patientId}?page=${page}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -35,7 +35,7 @@ function PrescriptionByPatient() {
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:3000/prescription/${id}`, {
+      const response = await axios.delete(`https://pharmaclinic-production.up.railway.app/prescription/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

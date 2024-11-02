@@ -33,7 +33,7 @@ function AllUser() {
     try {
       console.log(id)
       const role = selectedRole[id]
-      const response = await axios.put(`http://localhost:3000/user/role/${id}`, { role }, {
+      const response = await axios.put(`https://pharmaclinic-production.up.railway.app/user/role/${id}`, { role }, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -52,7 +52,7 @@ function AllUser() {
   }, [page]);
   const GetUsers = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/user?page=${page}`, {
+      const response = await axios.get(`https://pharmaclinic-production.up.railway.app/user?page=${page}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -75,7 +75,7 @@ function AllUser() {
   }
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:3000/user/${id}`, {
+      const response = await axios.delete(`https://pharmaclinic-production.up.railway.app/user/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

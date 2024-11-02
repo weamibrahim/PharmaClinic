@@ -47,7 +47,7 @@ const ViewPrescription = () => {
 
   const getPrescriptionDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/prescription/view/${id}`, {
+      const response = await axios.get(`https://pharmaclinic-production.up.railway.app/prescription/view/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
