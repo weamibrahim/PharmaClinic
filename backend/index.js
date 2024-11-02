@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Middleware to enable CORS
 app.use(cors({
-  origin: 'http://localhost:5173', 
+  origin: '*', 
   
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true 
@@ -22,7 +22,7 @@ app.use(cors({
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: 'http://localhost:5173', 
+    origin: '*', 
     methods: ['GET', 'POST'],
     credentials: true
   }
