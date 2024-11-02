@@ -1,4 +1,4 @@
-import React,  from 'react';
+import React  from 'react';
 import Sidebar from '../Components/sidebar';
 import { Outlet } from 'react-router-dom';
 import ModelForChat from '../Components/ModelForChat';
