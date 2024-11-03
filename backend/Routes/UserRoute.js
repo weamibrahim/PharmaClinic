@@ -14,6 +14,9 @@ router.put("/:id",upload.single("photo"), verifyToken, UserController.updateUser
 router.put("/role/:id",verifyToken,verifyRoleAdmin,UserController.updateRoleOfUser)
 router.delete("/:id", verifyToken,verifyRoleAdmin, UserController.deleteUser);
 
+router.post("/forgot-password", UserController.forgetPassword);
+router.post("/reset-password",verifyToken, UserController.resetPassword);
+
 
 // Export the router
 module.exports = router;

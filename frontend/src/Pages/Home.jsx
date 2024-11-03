@@ -31,7 +31,7 @@ function Home() {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut", delay: 2 }}
+            transition={{ duration: 0.5, ease: "easeInOut", delay: 1.5 }}
           >
          <div className='text-center'>
           <h1 className="text-4xl font-bold mb-4">Doctors</h1>
@@ -48,7 +48,7 @@ function Home() {
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut", delay:2 }}
+            transition={{ duration: 0.5, ease: "easeInOut", delay:1.5 }}
           >
       <img src={doctor}
       className='w-full h-4/5 rounded-full'
@@ -62,7 +62,7 @@ function Home() {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut", delay: 3 }}
+            transition={{ duration: 0.5, ease: "easeInOut", delay: 2.5 }}
           >
       <img src={pharmacy}
       className='w-full h-4/5 rounded-full'
@@ -75,7 +75,7 @@ function Home() {
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut", delay: 3 }}
+            transition={{ duration: 0.5, ease: "easeInOut", delay: 2.5 }}
           >
          <div className='text-center pb-5'>
           <h1 className="text-4xl font-bold mb-4">Pharmacy</h1>

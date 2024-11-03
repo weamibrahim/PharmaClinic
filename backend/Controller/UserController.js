@@ -3,6 +3,7 @@ const Prescription = require("../Models/Prescription");
 const Patient = require("../Models/Patient");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
 const UserController = {};
 const {RegistrationSchema, LoginSchema} = require("../Middleware/vaildation");
 
@@ -167,4 +168,52 @@ UserController.deleteUser = async (req, res) => {
   }
 };
 
+UserController.forgetPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const token = jwt.sign({ userId: user._id }, process.env.ACCESS_TOKEN_SECRET);
+    const resetLink = `${process.env.CLIENT_URL}/resetPassword/${token}`;
+     
+     const transporter = nodemailer.createTransport({
+      service: "Gmail",
+      auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD,
+      },
+    });
+
+    const mailOptions = {
+      to: email,
+      subject: "Password Reset",
+      html: `<p>Click the following link to reset your password: <a href="${resetLink}">Reset Password</a></p>`,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.json({ message: "Password reset link sent to your email" });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+UserController.resetPassword = async (req, res) => {
+  try {
+    const { password } = req.body;
+    const userId = req.user.userId;
+    console.log(userId);
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { password: hashedPassword },
+      { new: true }
+    );
+    res.json({ updatedUser, message: "Password updated successfully" });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+}
 module.exports = UserController;

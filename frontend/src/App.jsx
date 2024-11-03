@@ -21,7 +21,10 @@ import Chat from "./Components/Chat";
 import { useLogin } from "./Context/IsLoginContext";
 import Header from "./Components/Header";
 import { ToastContainer } from 'react-toastify';
+import ForgetPassword from "./Pages/ForgetPassword";
+import ResetPassword from "./Pages/ResetPassword";
 import NotFound from "./Pages/NotFound";
+
 
 function App() {
 
@@ -81,6 +84,8 @@ function App() {
         <Route path="/" element={<><Header /><Home /></>} />
         <Route path="/login" element={<><Header /><Login /></>} />
         <Route path="/register" element={<><Header /><Register /></>} />
+        <Route path="/forgetPassword" element={<ForgetPassword />} />
+        <Route path="/resetPassword/:token" element={<ResetPassword />} />
         <Route path ="*" element ={<NotFound/>}/>
         
     
