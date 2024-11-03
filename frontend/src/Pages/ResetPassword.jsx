@@ -17,7 +17,7 @@ function ResetPassword() {
         if (!password) {
             setError("Password is required");
             return;
-        } else if (password.length <= 5) {
+        } else if (password.length < 5) {
             setError("Password must be at least 5 characters");
             return;
         }
@@ -52,6 +52,10 @@ function ResetPassword() {
                     name='password'
                     className='p-2 border rounded-md   focus:border-green-500'
                 />
+               
+                <button onClick={handleSubmit} className='mt-4 p-2 bg-green-500 text-white rounded-md'>
+                    Submit
+                </button>
                 {error && (
                     <div
                         className="p-4 mt-2 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
@@ -60,9 +64,6 @@ function ResetPassword() {
                         {error}
                     </div>
                 )}
-                <button onClick={handleSubmit} className='mt-4 p-2 bg-green-500 text-white rounded-md'>
-                    Submit
-                </button>
             </div>
         </div>
     );
