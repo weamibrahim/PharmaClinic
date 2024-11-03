@@ -18,7 +18,7 @@ function ResetPassword() {
             setError("Password is required");
             return;
         } else if (password.length <= 5) {
-            setError("Password must be at least 6 characters");
+            setError("Password must be at least 5 characters");
             return;
         }
 
