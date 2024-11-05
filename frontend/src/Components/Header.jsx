@@ -14,13 +14,13 @@ function classNames(...classes) {
 }
 
 export default function Header() {
-    const { IsLogin } = useLogin();
-    const userData = JSON.parse(localStorage.getItem("user"));
-    const userRole = userData ? userData.role : null;
+  const { IsLogin } = useLogin();
+  const userData = JSON.parse(localStorage.getItem("user"));
+  const userRole = userData ? userData.role : null;
 
-    useEffect(() => {
-        
-      }, [IsLogin]);
+  useEffect(() => {
+
+  }, [IsLogin]);
   return (
     <Disclosure as="nav" className="bg-gray-200">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -54,71 +54,118 @@ export default function Header() {
             </div>
           </div>
           {/* Right-aligned Login and Register links */}
-          { IsLogin ?
-          (  
-          userRole === "admin" ? (
-            <div className="hidden sm:flex sm:ml-6">
-               <MdDashboard  className='text-2xl'/>
-            <NavLink
-              to="/users"
-               className="text-black text-xl ms-2"
-            >
-             Dashboard
-            </NavLink>
-            
-          </div>
-         ):userRole === "doctor" ? (
-            <div className="hidden sm:flex sm:ml-6">
-               <MdDashboard  className='text-2xl'/>
-            <NavLink
-              to="/patients"
-               className="text-black text-xl ms-2"
-            >
-             Dashboard
-            </NavLink>
-            
-          </div>
-         ):userRole==="pharmacist" ? ( <div className="hidden sm:flex sm:ml-6 items-center">
-          <MdDashboard  className='text-2xl'/>
-            <NavLink
-              to="/allMedicines"
-              className="text-black text-xl ms-2"
-            >
-             Dashboard
-            </NavLink>
+          {IsLogin ?
+            (
+              userRole === "admin" ? (
+                <div className="hidden sm:flex sm:ml-6">
+                  <MdDashboard className='text-2xl' />
+                  <NavLink
+                    to="/users"
+                    className="text-black text-xl ms-2"
+                  >
+                    Dashboard
+                  </NavLink>
 
-            
-          </div>):null
+                </div>
+              ) : userRole === "doctor" ? (
+                <div className="hidden sm:flex sm:ml-6">
+                  <MdDashboard className='text-2xl' />
+                  <NavLink
+                    to="/patients"
+                    className="text-black text-xl ms-2"
+                  >
+                    Dashboard
+                  </NavLink>
 
-          ):(<div className="hidden sm:flex sm:ml-6">
-             
-            <NavLink
-              to="/login"
-              
-              className={classNames(
-                'text-black hover:bg-gray-700 hover:text-white',
-                'rounded-md px-3 py-2 text-lg font-medium',
-              )}
-            >
-              Login
-            </NavLink>
-            <NavLink
-              to="/register"
-              className={classNames(
-                'text-black hover:bg-gray-700 hover:text-white',
-                'rounded-md px-3 py-2 text-lg font-medium',
-              )}
-            >
-              Register
-            </NavLink>
-          </div>)}
-          
+                </div>
+              ) : userRole === "pharmacist" ? (<div className="hidden sm:flex sm:ml-6 items-center">
+                <MdDashboard className='text-2xl' />
+                <NavLink
+                  to="/allMedicines"
+                  className="text-black text-xl ms-2"
+                >
+                  Dashboard
+                </NavLink>
+
+
+              </div>) : null
+
+            ) : (<div className="hidden sm:flex sm:ml-6">
+
+              <NavLink
+                to="/login"
+
+                className={classNames(
+                  'text-black hover:bg-gray-700 hover:text-white',
+                  'rounded-md px-3 py-2 text-lg font-medium',
+                )}
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/register"
+                className={classNames(
+                  'text-black hover:bg-gray-700 hover:text-white',
+                  'rounded-md px-3 py-2 text-lg font-medium',
+                )}
+              >
+                Register
+              </NavLink>
+            </div>)}
+
         </div>
       </div>
 
       <DisclosurePanel className="sm:hidden">
-      {!IsLogin && (
-        <div className="space-y-1 px-2 pb-3 pt-2">
+
+        {IsLogin ? (
+
+
+          userRole === "admin" ? (
+            <DisclosureButton className="w-full px-3 py-4">
+               <div className=' flex items-center space-y-1  justify-center  rounded-md px-3 py-2 text-base font-medium bg-gray-400 '>
+              <MdDashboard className='text-2xl' />
+              <NavLink
+                to="/users"
+                className="text-black text-xl ms-2"
+              >
+                Dashboard
+              </NavLink>
+              </div>
+            </DisclosureButton>
+          ) : userRole === "doctor" ? (
+
+            <DisclosureButton className="w-full px-3 py-4">
+             <div className=' flex items-center space-y-1  justify-center  rounded-md px-3 py-2 text-base font-medium bg-gray-400 '>
+             <MdDashboard className='text-2xl' />
+              <NavLink
+                to="/patients"
+                className="text-black text-xl ms-2"
+              >
+                Dashboard
+              </NavLink>
+             </div>
+
+            </DisclosureButton>
+          ) : userRole === "pharmacist" ? (
+            <DisclosureButton className="w-full px-3 py-4">
+ <div className=' flex items-center space-y-1  justify-center  rounded-md px-3 py-2 text-base font-medium bg-gray-400 '>
+              <MdDashboard className='text-2xl' />
+              <NavLink
+                to="/allMedicines"
+                className="text-black text-xl ms-2"
+              >
+                Dashboard
+              </NavLink>
+
+</div>
+
+            </DisclosureButton>) : null
+
+
+
+
+        ) : (<div className="space-y-1 px-2 pb-3 pt-2">
           {navigation.map((item) => (
             <DisclosureButton
               key={item.name}
@@ -133,8 +180,7 @@ export default function Header() {
               {item.name}
             </DisclosureButton>
           ))}
-        </div>
-      )}
+        </div>)}
       </DisclosurePanel>
     </Disclosure>
   );

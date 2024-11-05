@@ -18,7 +18,7 @@ function Home() {
       </div>
     </div>
     <div>
-    <div className='text-center my-14'>
+    <div className='text-center my-14 px-4'>
           <h1 className="text-4xl font-bold mb-4">About Us</h1>
           <p className="text-lg bg-gray-100 p-4 w-1/2 mx-auto rounded-full"> 
             We are a team of doctors and pharmacists dedicated to providing high-quality healthcare services to our patients.</p>
