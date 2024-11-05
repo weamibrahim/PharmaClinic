@@ -11,9 +11,13 @@ MessageController.sendMessage = async (req, res) => {
       message,
     });
     await newMessage.save();
+
+    const roomName = [senderId, receiverId].sort().join('-');
+    global.io.to(roomName).emit("newMessage", newMessage);
+
   
-    global.io.to(receiverId.toString()).emit("newMessage", newMessage);
-    global.io.to(senderId.toString()).emit("newMessage", newMessage);
+    // global.io.to(receiverId.toString()).emit("newMessage", newMessage);
+    // global.io.to(senderId.toString()).emit("newMessage", newMessage);
 
     res.status(200).json({ message: "Message sent successfully" });
   } catch (error) {

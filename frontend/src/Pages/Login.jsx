@@ -115,7 +115,7 @@ function Login() {
               <button type="submit" disabled={isSubmitting} className="text-white  bg-green-400 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-400 dark:focus:ring-green-800">login</button>
 
             </div>
-           
+
             <p className="text-sm font-light text-gray-400 dark:text-gray-400 my-2">
               Don’t have an account yet? <NavLink to="/register" className="font-medium text-green-600 hover:underline dark:text-green-400">Sign up</NavLink>
             </p>
@@ -124,7 +124,7 @@ function Login() {
               Forgot <NavLink to="/forgetPassword" className="font-medium text-green-600 hover:underline dark:text-green-400">password?</NavLink>
             </p>
           </Form>
-          
+
         )}
 
       </Formik>

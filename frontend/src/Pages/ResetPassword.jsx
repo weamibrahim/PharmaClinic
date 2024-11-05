@@ -52,7 +52,7 @@ function ResetPassword() {
                     name='password'
                     className='p-2 border rounded-md   focus:border-green-500'
                 />
-               
+
                 <button onClick={handleSubmit} className='mt-4 p-2 bg-green-500 text-white rounded-md'>
                     Submit
                 </button>

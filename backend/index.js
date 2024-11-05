@@ -35,11 +35,12 @@ io.on('connection', (socket) => {
   console.log('User connected:', socket.id);
 
 
-  socket.on('joinRoom', (userId) => {
-    if(userId){
-    socket.join(userId);
-    } // Join room specific to userId
-    console.log(`User with ID: ${userId} joined their room`);
+  socket.on('joinRoom', ({senderId, receiverId}) => {
+    const roomName = [senderId, receiverId].sort().join('-');
+    socket.join(roomName);
+    //console.log("Joined room:", roomName);
+   
+   
   });
 
 

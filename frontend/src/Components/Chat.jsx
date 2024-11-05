@@ -119,7 +119,8 @@ function Chat() {
 
   useEffect(() => {
     fetchUsers();
-    socket.emit('joinRoom', currentUserId);
+
+    socket.emit('joinRoom', { senderId: currentUserId, receiverId: selectedUser?._id });
 
     socket.on('newMessage', (newMessages) => {
 
