@@ -47,37 +47,39 @@ function App() {
 
 
           {/* Routes for doctor */}
-          {userRole === "doctor" ? (
+
+          {IsLogin &&
+          userRole === "doctor" ? (
             <>
           
-              <Route path="/patients" element={isLoggedIn ? <Patients /> : <Navigate to="/login" />} />
-              <Route path="/creatPatients" element={isLoggedIn ? <CreatPatients /> : <Navigate to="/login" />} />
-              <Route path="/updatePatients/:id" element={isLoggedIn ? <UpdatePatients /> : <Navigate to="/login" />} />
-              <Route path="/addPrescription/:patientId" element={isLoggedIn ? <CreatePrescription /> : <Navigate to="/login" />} />
-              <Route path="/updatePrescription/:patientId/:id" element={isLoggedIn ? <UpdatePrescription /> : <Navigate to="/login" />} />
-              <Route path="/viewPrescription/:id" element={isLoggedIn ? <ViewPrescription /> : <Navigate to="/login" />} />
-              <Route path="/prescription/:patientId" element={isLoggedIn ? <PrescriptionByPatient /> : <Navigate to="/login" />} />
-              <Route path="/allPrescription" element={isLoggedIn ? <AllPrescription /> : <Navigate to="/login" />} />
-              <Route path="/updateProfile" element={isLoggedIn ? <UpdateProfile /> : <Navigate to="/login" />} />
+              <Route path="/patients" element={ <Patients /> } />
+              <Route path="/creatPatients" element={ <CreatPatients /> } />
+              <Route path="/updatePatients/:id" element={ <UpdatePatients /> } />
+              <Route path="/addPrescription/:patientId" element={ <CreatePrescription /> } />
+              <Route path="/updatePrescription/:patientId/:id" element={ <UpdatePrescription /> } />
+              <Route path="/viewPrescription/:id" element={ <ViewPrescription /> } />
+              <Route path="/prescription/:patientId" element={ <PrescriptionByPatient /> } />
+              <Route path="/allPrescription" element={ <AllPrescription /> } />
+              <Route path="/updateProfile" element={ <UpdateProfile /> } />
             </>
           ) : userRole === "pharmacist" ? (  // Routes for pharmacist
             <>
               
-              <Route path="/allPrescription" element={isLoggedIn ? <AllPrescription /> : <Navigate to="/login" />} />
-              <Route path="/allMedicines" element={isLoggedIn ? <AllMedicines /> : <Navigate to="/login" />} />
-              <Route path="/createMedicines" element={isLoggedIn ? <CreateMedicines /> : <Navigate to="/login" />} />
-              <Route path="/updateMedicines/:id" element={isLoggedIn ? <UpdateMedicines /> : <Navigate to="/login" />} />
-              <Route path="/viewPrescription/:id" element={isLoggedIn ? <ViewPrescription /> : <Navigate to="/login" />} />
-              <Route path="/updateProfile" element={isLoggedIn ? <UpdateProfile /> : <Navigate to="/login" />} />
+              <Route path="/allPrescription" element={ <AllPrescription /> } />
+              <Route path="/allMedicines" element={ <AllMedicines /> } />
+              <Route path="/createMedicines" element={ <CreateMedicines /> } />
+              <Route path="/updateMedicines/:id" element={ <UpdateMedicines /> } />
+              <Route path="/viewPrescription/:id" element={ <ViewPrescription /> } />
+              <Route path="/updateProfile" element={ <UpdateProfile /> } />
             </>
           ) : userRole === "admin" ? (
             <>
               
-              <Route path="/users" element={isLoggedIn ? <AllUser /> : <Navigate to="/login" />} />
-              <Route path="/updateProfile" element={isLoggedIn ? <UpdateProfile /> : <Navigate to="/login" />} />
+              <Route path="/users" element={ <AllUser /> } />
+              <Route path="/updateProfile" element={ <UpdateProfile /> } />
 
 
-            </>) : null}
+            </>) : null }
 
         </Route>
        
