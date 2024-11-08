@@ -9,13 +9,13 @@ function Home() {
     <>
     <div className="relative">
       <img src={imageHome} className="w-full h-full" alt="home" />
-      <div className="absolute inset-0 flex  justify-center ">
-        <div className=' md:ms-24 md:text-6xl md:font-bold text-white  pt-200 md:pt-24 flex flex-col items-center'>
+      {/* <div className="absolute inset-0 flex  justify-center ">
+        <div className=' md:ms-24 md:text-6xl md:font-bold text-cyan-400  pt-200 md:pt-24 flex flex-col items-center'>
           <span className='md:mb-4'>Doctors</span>
           <span className='md:my-4'> &</span>
           <span className='md:mb-4'>Pharmacy</span>
         </div>
-      </div>
+      </div> */}
     </div>
     <div>
     <div className='text-center my-14 px-4'>
