@@ -147,13 +147,13 @@ function Sidebar() {
           </div>
         </div>
       </nav>
-      <aside
-  id="logo-sidebar"
-  className={`fixed top-0 left-0 z-40 w-52 pt-20 transition-transform ${
-    isOpen ? "translate-x-0" : "-translate-x-full"
-  } bg-green-100 border-r-2 h-screen sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700`}
-  aria-label="Sidebar"
->
+<aside
+            id="logo-sidebar"
+            className={`fixed top-0 left-0 z-40 w-52 md:w-64 pt-20 transition-transform ${
+              isOpen ? "translate-x-0" : "-translate-x-full"
+              } bg-green-100 border-r-2 h-screen sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700`}
+            aria-label="Sidebar"
+        >
   <div className="px-3 pb-4 h-full overflow-y-auto bg-green-100 dark:bg-gray-800 flex flex-col justify-between">
     <ul className="space-y-2 font-medium my-8">
       {user.role === "doctor" && (

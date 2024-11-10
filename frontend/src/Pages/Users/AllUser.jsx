@@ -9,36 +9,24 @@ function AllUser() {
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
   const [totalPages, setTotalPages] = useState(0);
-  const [selectedRole, setSelectedRole] = useState({})
-  const [users, setUsers] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    specialization: "",
-    photo: "",
-    role: "",
+  const [users, setUsers] = useState([])
 
-
-  })
-
-  const handleChange = (userId, newRole) => {
-    setSelectedRole(
-      {
-        ...selectedRole
-        , [userId]: newRole
-      })
-  }
-  const handleUpdateRole = async (id) => {
+  
+  const handleRoleChange = async (id, role) => {
     try {
       console.log(id)
-      const role = selectedRole[id]
+    
       const response = await axios.put(`https://pharmaclinic-production.up.railway.app/user/role/${id}`, { role }, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      GetUsers();
+      
+      setUsers((prevUsers=>
+        prevUsers.map((user) => 
+          user._id === id ? { ...user, role } : user)
+      
+      ))
       showToast(response.data.message, 'success');
       console.log(response)
 
@@ -62,7 +50,7 @@ function AllUser() {
         initialRoles[user._id] = user.role
 
       });
-      setSelectedRole(initialRoles)
+    
       console.log(response.data);
       setUsers(response.data.users);
       setTotalPages(response.data.totalPages);
@@ -143,8 +131,8 @@ function AllUser() {
                     <select
 
                       name='role'
-                      value={selectedRole[user._id]}
-                      onChange={(e) => { handleChange(user._id, e.target.value) }}
+                      value={user.role}
+                      onChange={(e) => { handleRoleChange(user._id, e.target.value) }}
                       className='bg-transparent'
                     >
                       <option>select</option>
@@ -152,8 +140,7 @@ function AllUser() {
                       <option value="admin">admin</option>
                       <option value="pharmacist">pharmacist</option>
                     </select>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ms-1" onClick={() => handleUpdateRole(user._id)}><FaRegEdit /> </button>
-
+                    
                   </td>
                   <td className='py-2 px-4 border-b'>  <button
                     onClick={() => handleDelete(user._id)}
