@@ -133,7 +133,7 @@ function AllUser() {
                      <option>select</option>
                       <option value="doctor" >doctor</option>
                       <option value="admin" >admin</option>
-                      <option value="pharmacist " >pharmacist</option>
+                      <option value="pharmacist" >pharmacist</option>
                     </select>
                     
                   </td>
