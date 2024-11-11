@@ -45,12 +45,7 @@ function AllUser() {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      const initialRoles = {}
-      response.data.users.forEach(user => {
-        initialRoles[user._id] = user.role
-
-      });
-    
+     
       console.log(response.data);
       setUsers(response.data.users);
       setTotalPages(response.data.totalPages);
@@ -135,9 +130,9 @@ function AllUser() {
                       onChange={(e) => { handleRoleChange(user._id, e.target.value) }}
                       className='bg-transparent '
                     >
-                     
+                     <option>select</option>
                       <option value="doctor" >doctor</option>
-                      <option value="admin " >admin</option>
+                      <option value="admin" >admin</option>
                       <option value="pharmacist " >pharmacist</option>
                     </select>
                     
