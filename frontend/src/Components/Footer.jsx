@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <footer className="bg-gray-400 rounded-lg shadow sm:flex sm:items-center sm:justify-between p-4 sm:p-6 xl:p-8 dark:bg-gray-800 antialiased">
+    <footer className="bg-gray-300 rounded-lg shadow sm:flex sm:items-center sm:justify-between p-4 sm:p-6 xl:p-8 dark:bg-gray-800 antialiased">
     <p className="mb-4 text-sm text-center text-dark dark:text-gray-400 sm:mb-0">
         &copy; 2024  All rights reserved.
     </p>

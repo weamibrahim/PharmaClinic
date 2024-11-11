@@ -58,7 +58,7 @@ function AllMedicines() {
   };
 
   return (
-    <div className="mx-auto p-4 sm:ml-64 mt-16 background_pharamcy">
+    <div className="mx-auto py-4 sm:ml-64 mt-16 md:px-5 background_pharamcy">
       <div className="flex justify-between mb-4 my-10">
         <input
           type="text"
@@ -68,7 +68,7 @@ function AllMedicines() {
           className="border border-gray-300 rounded-md px-2 py-1"
         />
         <button className="text-center ms-2 p-1  bg-transparent border-2  border-blue-500 hover:bg-blue-700 text-blue-500 hover:text-white font-bold  rounded">
-          <NavLink to="/createMedicines">Add Medicine</NavLink>
+          <NavLink to="/createMedicines">Add </NavLink>
         </button>
       </div>
       <div className="overflow-x-auto">

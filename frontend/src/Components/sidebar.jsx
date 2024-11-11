@@ -11,6 +11,7 @@ import NotificationAddMedicine from "./NotificationaddMedicine";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faFilePrescription} from "@fortawesome/free-solid-svg-icons";
 import {faHospitalUser} from "@fortawesome/free-solid-svg-icons";
+import icon from "../../public/icon.png"
 
 function Sidebar() {
   const { setIsLogin } = useLogin();
@@ -63,7 +64,7 @@ function Sidebar() {
               </button>
               <NavLink to="/" className="flex md:ms-2 ms-9 md:me-24">
                 <img
-                  src="https://img.freepik.com/free-vector/hand-drawn-baby-logo_23-2148013976.jpg?t=st=1728926916~exp=1728930516~hmac=841ca1c28443c274b1c12172e09a48afd622611df20d22a49ea0938099b40a0d&w=740"
+                  src={icon}
                   className="w-12 h-12 me-3 rounded-full hidden md:block"
                   alt="FlowBite Logo"
                 />
@@ -76,10 +77,10 @@ function Sidebar() {
               <div className="flex items-center ms-3">
              {
               user.role === "pharmacist" && (
-                <div className="mx-3"><NotificationBell/></div>)
+                <div className="mx-2 text-sm"><NotificationBell/></div>)
              }
              {user.role==="doctor" && (
-               <div className="mx-3"><NotificationAddMedicine/></div>
+               <div className="mx-2 text-sm"><NotificationAddMedicine/></div>
               )}
                 <div>
                   <button
@@ -100,12 +101,12 @@ function Sidebar() {
                
                 {isMenuOpen && (
                   <div
-                    className="absolute  right-0 top-12 my-2 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+                    className="absolute   right-0 top-12 my-2 text-base list-none bg-gray-100 divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
                     id="dropdown-user"
                   >
                     <div className="px-4 py-3" role="none">
                       <p
-                        className="text-sm text-gray-900 dark:text-white"
+                        className="text-sm font-medium text-gray-900 dark:text-white"
                         role="none"
                       >
                         {user.name}
@@ -121,7 +122,7 @@ function Sidebar() {
                       <li>
                         <NavLink
                           to="/updateProfile"
-                          className="inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="inline-flex px-4 py-2 w-full text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                           role="menuitem"
                         >
                           <IoIosSettings className="my-1 me-2" />
@@ -132,7 +133,7 @@ function Sidebar() {
                       <li>
                         <NavLink
                           to="#"
-                          className="inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="w-full inline-flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                           role="menuitem"
                         >
                           <CiLogout className="my-1 me-2" />
@@ -149,9 +150,9 @@ function Sidebar() {
       </nav>
 <aside
             id="logo-sidebar"
-            className={`fixed top-0 left-0 z-40 w-52 md:w-64 pt-20 transition-transform ${
+            className={`fixed top-0 left-0 z-40 w-52 md:w-64 pt-20  transition-transform ${
               isOpen ? "translate-x-0" : "-translate-x-full"
-              } bg-green-100 border-r-2 h-screen sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700`}
+              } bg-green-100 border-r-2 ease-in-out duration-500  h-screen sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700`}
             aria-label="Sidebar"
         >
   <div className="px-3 pb-4 h-full overflow-y-auto bg-green-100 dark:bg-gray-800 flex flex-col justify-between">

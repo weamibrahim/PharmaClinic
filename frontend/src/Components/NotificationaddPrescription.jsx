@@ -76,7 +76,7 @@ const NotificationAddPrescription = () => {
 
 
             {isOpen && (
-                <div className="absolute right-0 mt-2 md:w-96 w-52 bg-white shadow-lg p-4 rounded">
+                <div className="absolute right-0 mt-2 md:w-96 w-52 bg-gray-100 shadow-lg p-4 rounded">
                     <h3 className="font-bold">Notifications</h3>
                     <ul>
                         {notifications.length > 0 ? (

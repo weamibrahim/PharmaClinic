@@ -85,7 +85,7 @@ function AllUser() {
   };
 
   return (
-    <div className="mx-auto p-4 sm:ml-64 mt-16 background_pharamcy">
+    <div className="mx-auto p-4 sm:ml-64 mt-16 background_user">
       <div className="flex justify-between mb-4 my-10">
         <input
           type="text"
@@ -95,7 +95,7 @@ function AllUser() {
           className="border border-gray-300 rounded-md px-2 py-1"
         />
       </div>
-      <h1 className="text-2xl font-bold mb-4">All users</h1>
+     
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white/20 border border-gray-200">
           <thead>
@@ -133,12 +133,12 @@ function AllUser() {
                       name='role'
                       value={user.role}
                       onChange={(e) => { handleRoleChange(user._id, e.target.value) }}
-                      className='bg-transparent'
+                      className='bg-transparent '
                     >
-                      <option>select</option>
-                      <option value="doctor">doctor</option>
-                      <option value="admin">admin</option>
-                      <option value="pharmacist">pharmacist</option>
+                     
+                      <option value="doctor" >doctor</option>
+                      <option value="admin " >admin</option>
+                      <option value="pharmacist " >pharmacist</option>
                     </select>
                     
                   </td>

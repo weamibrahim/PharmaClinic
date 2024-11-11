@@ -72,7 +72,7 @@ function NotificationAddMedicine() {
                 )}
             </div>
             {isOpen && (
-                <div className="absolute top-10 right-0 md:w-96 w-52 bg-white rounded-lg shadow-lg p-4">
+                <div className="absolute top-10 right-0 md:w-96 w-52 bg-gray-100 rounded-lg shadow-lg p-4">
                     <ul>
                         {notifications.length > 0 ? (
                             notifications.map((notification, index) => (
